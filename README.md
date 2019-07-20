@@ -1,2 +1,2 @@
 # nextcloud
-.env with docker-compose file names
+.env with docker-compose file names missing
