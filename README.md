@@ -3,8 +3,8 @@ missing: .env w/ environment variables used in docker-compose.yml
 
 # run
 don't forget .env variables used in docker-compose.yml
-`source .env`
-`sudo docker-compose up -d --build`
+ `source .env`
+ `sudo docker-compose up -d --build`
 
 ### rpi-mariadb image for raspberry pi, change to other database image per doc on [nextcloud-docker](https://github.com/nextcloud/docker) if needed
 
