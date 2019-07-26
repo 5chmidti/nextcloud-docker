@@ -16,9 +16,9 @@ don't forget .env variables used in docker-compose.yml
   - my.config.php php [configuration](https://docs.nextcloud.com/server/13/admin_manual/configuration_server/config_sample_php_parameters.html?highlight=config)
   - timezone
   
-if not using traefik, just delete all labels regarding traefik and the network discovery
 
 ## composing container:
+if not using traefik, just delete all labels regarding traefik and the network discovery
 
 nextcloud:
   - persistent data: data,config,apps (custom_apps)
