@@ -11,7 +11,7 @@ don't forget .env variables used in docker-compose.yml
 #### rpi-mariadb image for raspberry pi, change to other database image per doc on [nextcloud-docker](https://github.com/nextcloud/docker) if needed
 
 
-building own image ontop of the nextcloud image with:
+## building own image ontop of the nextcloud image with:
   - supervisord for cronjobs from examples@[nextcloud-docker](https://github.com/nextcloud/docker)
   - my.config.php php [configuration](https://docs.nextcloud.com/server/13/admin_manual/configuration_server/config_sample_php_parameters.html?highlight=config)
   - timezone
