@@ -1,5 +1,5 @@
 # nextcloud-docker
-missing: .env w/ environment variables used in docker-compose.yml
+missing: .env w/ environment variables used in docker-compose.yml, should be your own anyway
 
 ## run
 don't forget .env variables used in docker-compose.yml
