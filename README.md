@@ -9,7 +9,7 @@ MYSQL_DATABASE=
 MYSQL_USER=
 ```
 
-## added cron job in dockerfile not working for some reason + some php errors in the docker logs
+### added cron job in dockerfile not working for some reason + some php errors in the docker logs
 
 ## run
 don't forget .env variables used in docker-compose.yml
