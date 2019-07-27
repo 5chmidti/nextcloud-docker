@@ -1,5 +1,13 @@
 # nextcloud-docker
 missing: .env w/ environment variables used in docker-compose.yml, should be your own anyway
+```
+NEXTCLOUD_HTTP_PORT=
+NEXTCLOUD_PATHPREFIX=/abc //only if using traefik, my.config.php overwritewebroot needs to be the same, delete if not needed
+MYSQL_ROOT_PASSWORD=
+MYSQL_PASSWORD=
+MYSQL_DATABASE=
+MYSQL_USER=
+```
 
 ## run
 don't forget .env variables used in docker-compose.yml
