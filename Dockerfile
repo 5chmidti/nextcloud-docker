@@ -7,6 +7,8 @@ RUN apt-get update && apt-get install -y \
 
 COPY supervisord.conf /etc/supervisor/supervisord.conf
 
+RUN echo '*/10 * * * * php occ preview:pre-generate' >> /var/spool/cron/crontabs/www-data
+
 COPY my.config.php /var/www/html/config/my.config.php
 
 ENV TZ=Europe/Berlin
