@@ -1,5 +1,6 @@
 # nextcloud-docker
 works, but not perfect
+
 missing: .env w/ environment variables used in docker-compose.yml, should be your own anyway
 ```
 NEXTCLOUD_HTTP_PORT=
