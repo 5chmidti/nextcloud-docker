@@ -11,8 +11,6 @@ MYSQL_DATABASE=
 MYSQL_USER=
 ```
 
-### some php errors in the docker logs
-
 ## run
 don't forget .env variables used in docker-compose.yml
 
