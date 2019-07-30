@@ -31,3 +31,4 @@ binlog_format = ROW
 innodb_large_prefix=on
 innodb_file_format=barracuda
 innodb_file_per_table=1
+default_authentication_plugin=mysql_native_password
