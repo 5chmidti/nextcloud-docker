@@ -31,6 +31,7 @@ don't forget .env variables used in docker-compose.yml
 ## building own image ontop of the nextcloud image with:
   ### nextcloud:
   - supervisord for cronjobs from examples@[nextcloud-docker](https://github.com/nextcloud/docker)
+    - conrjob for previewgenerator plugin, needs to be installed (and generate-all)
   - my.config.php php [configuration](https://docs.nextcloud.com/server/13/admin_manual/configuration_server/config_sample_php_parameters.html?highlight=config)
   - timezone
   
