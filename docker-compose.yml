@@ -15,12 +15,13 @@ volumes:
 services:
   db:
     container_name: nextcloud_db
-    image: jsurf/rpi-mariadb
+    #image: jsurf/rpi-mariadb
+    build: ./db
     restart: always
     volumes:
       - nextcloud_db:/var/lib/mysql
-      - ./myconfig.cnf:/etc/mysql/conf.d/myconfig.cnf:ro
-      - /etc/timezone:/etc/timezone:ro
+    #  - ./myconfig.cnf:/etc/mysql/conf.d/myconfig.cnf:ro
+    #  - /etc/timezone:/etc/timezone:ro
     environment:
       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
       - MYSQL_PASSWORD=${MYSQL_PASSWORD}
@@ -31,7 +32,7 @@ services:
 
   app:
     container_name: nextcloud
-    build: .
+    build: ./nextcloud
     ports:
       - ${NEXTCLOUD_HTTP_PORT}:80
     links:
