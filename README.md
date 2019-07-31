@@ -11,6 +11,13 @@ MYSQL_DATABASE=
 MYSQL_USER=
 ```
 
+## before you run
+  - environment variables, as needed
+  - #### change admin pw and user in docker-compose.yml
+  - my.config.php:
+    - trusted domains to your ip
+    - overwritewebroot only if needed, else delete
+
 ## run
 don't forget .env variables used in docker-compose.yml
 
@@ -22,12 +29,15 @@ don't forget .env variables used in docker-compose.yml
 
 
 ## building own image ontop of the nextcloud image with:
+  ### nextcloud:
   - supervisord for cronjobs from examples@[nextcloud-docker](https://github.com/nextcloud/docker)
   - my.config.php php [configuration](https://docs.nextcloud.com/server/13/admin_manual/configuration_server/config_sample_php_parameters.html?highlight=config)
   - timezone
   
+  ### db:
+  - myconfig.cnf mysql config
 
-## composing container:
+## docker-compose.yml:
 if not using traefik, just delete all labels regarding traefik and the network discovery
 
 nextcloud:
