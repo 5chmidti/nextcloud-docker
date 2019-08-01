@@ -20,7 +20,7 @@ services:
     restart: always
     volumes:
       - nextcloud_db:/var/lib/mysql
-    #  - ./myconfig.cnf:/etc/mysql/conf.d/myconfig.cnf:ro
+      - ./db/myconfig.cnf:/etc/mysql/conf.d/myconfig.cnf:ro
     #  - /etc/timezone:/etc/timezone:ro
     environment:
       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}

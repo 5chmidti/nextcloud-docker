@@ -9,5 +9,6 @@ $CONFIG = array (
   'enable_previews' => true,
   'preview_max_x' => 2048,
   'preview_max_y' => 2048, 
-  'preview_max_scale_factor' => 1,
+  'preview_max_scale_factor' => 4, #was 1
+  'jpeg_quality' => 60,
 );
