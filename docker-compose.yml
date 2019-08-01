@@ -42,7 +42,7 @@ services:
       - nextcloud_data:/var/www/html/data
       - nextcloud_config:/var/www/html/config
       - nextcloud_apps:/var/www/html/custom_apps
-    #  - ./my.config.php:/var/www/html/config/my.config.php
+      - ./nextcloud/my.config.php:/var/www/html/config/my.config.php
     #  - /etc/timezone:/etc/timezone:ro
     labels:
      - "traefik.enable=true"
