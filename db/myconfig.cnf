@@ -8,15 +8,16 @@ innodb_max_dirty_pages_pct = 90
 query_cache_type = 1
 query_cache_limit = 2M
 query_cache_min_res_unit = 2k
-query_cache_size = 32M #was 64M, tuning primer said mybe less
+query_cache_size = 8M #was 64M, tuning primer said mybe less
 tmp_table_size= 64M
 max_heap_table_size= 64M
 slow-query-log = 1
 slow-query-log-file = /var/log/mysql/slow.log
 long_query_time = 1
 
-#myqsl tuning primer suggestion, so *2
-join_buffer_size = 256k
+max_connections = 25
+
+join_buffer_size = 512k
 
 key_buffer = 64M
 
