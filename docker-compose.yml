@@ -14,7 +14,6 @@ volumes:
 services:
   db:
     container_name: nextcloud_db
-    #image: jsurf/rpi-mariadb
     build: ./db
     restart: always
     volumes:
@@ -43,25 +42,21 @@ services:
       - nextcloud_data:/var/www/html/data
       - nextcloud_config:/var/www/html/config
       - nextcloud_apps:/var/www/html/custom_apps
-      - ./nextcloud/my.config.php:/var/www/html/config/my.config.php
+      - ./nextcloud/my.config.php:/var/www/html/config/my.config.php:ro
       - /etc/timezone:/etc/timezone:ro
     labels:
      - "traefik.enable=true" 
     # - "traefik.http.routers.nextcloud.rule=Path(`/nextcloud`)"
      - "traefik.http.routers.nextcloud.entrypoints=web"
      - "traefik.docker.network=traefik_default"
-    # - "traefik.frontend.rule=PathPrefixStrip:${NEXTCLOUD_PATHPREFIX}"
-    # - "traefik.frontend.priority=1"
-    # - "traefik.docker.network=discovery"
-    # - "traefik.backend=nextcloud"
-    # - "traefik.port=80" #point to port that container locally wants
     environment:
      - NEXTCLOUD_ADMIN_USER=admin
      - NEXTCLOUD_ADMIN_PASSWORD=admin
      - MYSQL_DATABASE=${MYSQL_DATABASE}
      - MYSQL_USER=${MYSQL_USER}
      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
-     - MY_SQL_HOST=db
+    # - MY_SQL_HOST=db
+     - MYSQL_HOST=db
     restart: always
     networks:
      - traefik_default

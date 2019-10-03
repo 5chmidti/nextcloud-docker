@@ -17,7 +17,7 @@ long_query_time = 1
 
 max_connections = 25
 
-join_buffer_size = 512k
+join_buffer_size = 1M
 
 key_buffer = 64M
 
