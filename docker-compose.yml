@@ -14,10 +14,6 @@ services:
       - MYSQL_PASSWORD=${MYSQL_PASSWORD}
       - MYSQL_DATABASE=${MYSQL_DATABASE}
       - MYSQL_USER=${MYSQL_USER}
-    # labels:
-    #  - "traefik.docker.network=traefik_default"
-    # networks:
-    #  - traefik_default
 
   app:
     container_name: nextcloud
@@ -27,18 +23,12 @@ services:
     links:
       - db
     volumes:
-      - ${NEXTCLOUD_DATA_PATH}nextcloud:/var/www/html
+      # - ${NEXTCLOUD_DATA_PATH}nextcloud:/var/www/html
       - ${NEXTCLOUD_DATA_PATH}nextcloud_data:/var/www/html/data
       - ${NEXTCLOUD_DATA_PATH}nextcloud_config:/var/www/html/config
       - ${NEXTCLOUD_DATA_PATH}nextcloud_apps:/var/www/html/custom_apps
       - ./nextcloud/my.config.php:/var/www/html/config/my.config.php:ro
       - /etc/timezone:/etc/timezone:ro
-    # labels:
-    #  - "traefik.enable=true" 
-    # - "traefik.http.routers.nextcloud.rule=Path(`/nextcloud`)"
-    # - "traefik.http.routers.nextcloud.rule=Host(`nextcloud.rpi4`)"
-    #  - "traefik.http.routers.nextcloud.entrypoints=web" #
-    #  - "traefik.docker.network=traefik_default" #
     environment:
      - NEXTCLOUD_ADMIN_USER=admin
      - NEXTCLOUD_ADMIN_PASSWORD=admin
@@ -48,9 +38,3 @@ services:
     # - MY_SQL_HOST=db
      - MYSQL_HOST=db
     restart: always
-    # networks:
-    #  - traefik_default
-
-# networks:
-#     traefik_default:
-#       external: true
