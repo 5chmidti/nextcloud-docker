@@ -1,23 +1,12 @@
 version: '3'
 
-volumes:
-  nextcloud:
-  nextcloud_data:
-    external: true
-  nextcloud_config:
-    external: true
-  nextcloud_db:
-    external: true
-  nextcloud_apps:
-    external: true  
-
 services:
   db:
     container_name: nextcloud_db
     build: ./db
     restart: always
     volumes:
-      - nextcloud_db:/var/lib/mysql
+      - ${NEXTCLOUD_DATA_PATH}nextcloud_db:/var/lib/mysql
       - ./db/myconfig.cnf:/etc/mysql/conf.d/myconfig.cnf:ro
       - /etc/timezone:/etc/timezone:ro
     environment:
@@ -25,10 +14,10 @@ services:
       - MYSQL_PASSWORD=${MYSQL_PASSWORD}
       - MYSQL_DATABASE=${MYSQL_DATABASE}
       - MYSQL_USER=${MYSQL_USER}
-    labels:
-     - "traefik.docker.network=traefik_default"
-    networks:
-     - traefik_default
+    # labels:
+    #  - "traefik.docker.network=traefik_default"
+    # networks:
+    #  - traefik_default
 
   app:
     container_name: nextcloud
@@ -38,17 +27,18 @@ services:
     links:
       - db
     volumes:
-      - nextcloud:/var/www/html
-      - nextcloud_data:/var/www/html/data
-      - nextcloud_config:/var/www/html/config
-      - nextcloud_apps:/var/www/html/custom_apps
+      - ${NEXTCLOUD_DATA_PATH}nextcloud:/var/www/html
+      - ${NEXTCLOUD_DATA_PATH}nextcloud_data:/var/www/html/data
+      - ${NEXTCLOUD_DATA_PATH}nextcloud_config:/var/www/html/config
+      - ${NEXTCLOUD_DATA_PATH}nextcloud_apps:/var/www/html/custom_apps
       - ./nextcloud/my.config.php:/var/www/html/config/my.config.php:ro
       - /etc/timezone:/etc/timezone:ro
-    labels:
-     - "traefik.enable=true" 
+    # labels:
+    #  - "traefik.enable=true" 
     # - "traefik.http.routers.nextcloud.rule=Path(`/nextcloud`)"
-     - "traefik.http.routers.nextcloud.entrypoints=web"
-     - "traefik.docker.network=traefik_default"
+    # - "traefik.http.routers.nextcloud.rule=Host(`nextcloud.rpi4`)"
+    #  - "traefik.http.routers.nextcloud.entrypoints=web" #
+    #  - "traefik.docker.network=traefik_default" #
     environment:
      - NEXTCLOUD_ADMIN_USER=admin
      - NEXTCLOUD_ADMIN_PASSWORD=admin
@@ -58,9 +48,9 @@ services:
     # - MY_SQL_HOST=db
      - MYSQL_HOST=db
     restart: always
-    networks:
-     - traefik_default
+    # networks:
+    #  - traefik_default
 
-networks:
-    traefik_default:
-      external: true
+# networks:
+#     traefik_default:
+#       external: true
