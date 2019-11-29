@@ -12,6 +12,8 @@
 
 `sudo docker-compose up -d --build`
 
+#### there is an ownership error/bug at the first install, which prevents nextcloud from beeing installed/setup, after running `sudo docker-compose up -d --build` for the first time you should execute the fix_install.sh to fix that.
+
 #### rpi-mariadb image for raspberry pi, change to other database image per doc on [nextcloud-docker](https://github.com/nextcloud/docker) if needed
 
 ## building own image ontop of the nextcloud image with:
